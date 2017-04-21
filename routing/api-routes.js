@@ -64,7 +64,7 @@ app.post("/api/friends",function(req, res) {
                         });
         }
                         console.log(GirlArray)  
-                        GuyArray.push(req.body)
+                        BoyArray.push(req.body)
                         res.send(GirlArray)
 }
 

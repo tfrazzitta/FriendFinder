@@ -254,7 +254,7 @@ var gender= $("#gender").val();
 					$.ajax({
 							  url: url,
 							  method: "POST",
-							  data: userData
+							  context: userData
 							}).done(function(friends) {
 							  
 							  console.log(friends)
