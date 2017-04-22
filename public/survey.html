@@ -18,21 +18,22 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
 	<!-- <script src="java.js"></script> -->
 	<style type="text/css">
-			.move{
-				margin-left: 130px;
-				font-size: 24px;
-				font-weight: bold;
+			img{
+				height:300px;
+				width: 300px;
 			}
-			.move2{
-				margin-left: 107px;
-				font-size: 24px;
-				font-weight: bold;
+			body { 
+    		background-color: lightgreen;
+			}
+
+			.modal-content{
+				background: url("http://hdwallpaperbackgrounds.net/wp-content/uploads/2017/01/Yellow-Background-Image.jpg") no-repeat fixed center; 
 			}
 	</style>
 </head>
 <body>
 
-	<div class="container entire">
+	<div class="container entire text-center">
 
 		<h2 id="h2-survey">Survey Questions</h2>
 		<hr>
@@ -40,10 +41,10 @@
 		<h3 id="h3-about"><strong>About You</strong></h3>
 		<h4 id="h4-name">Name (Required)</h4>
 	<div id="compatable">
-		<input type="text" name="" id="name" class="form-control" required >
+		<input type="text" style="text-align: center;border:none;" name="" id="name" class="form-control" required >
 
 		<h4>Link to Photo Image (Required)</h4>
-		<input type="text" name="" id="photo" class="form-control" required >
+		<input style="text-align: center; border:none;" type="text" name="" id="photo" class="form-control" required >
 
 		<h3><strong>Gender</strong></h3>
 		<!-- <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>--> 
@@ -172,8 +173,10 @@
 		<br>
 		<br>
 		<!-- Submit Button -->
-		<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+
+		<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" style=" background-color: black"><i class="fa fa-check-circle" aria-hidden="true"></i>
  Submit</button>
+
 </div>
 		<hr>
 	<div id="reset"></div><br>
@@ -192,16 +195,16 @@
 	    <!-- Modal content-->
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h2 class="modal-title"><strong>Best Match</strong></h2>
+	        <button type="button" class="close" data-dismiss="modal" id="set">&times;</button>
+	        <h2 class="modal-title" style="text-align: center;"><strong>Best Match</strong></h2>
 	      </div>
-	      <div class="modal-body">
+	      <div class="modal-body" style="text-align: center;">
+	        <h2 id="compatable-match"></h2>
 	        <h2 id="matchName"></h2>
-	        <h3 id="compatable-match"></h3>
 	        <img id="matchImg" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="set">Close</button>
 	      </div>
 	    </div>
 
@@ -211,6 +214,8 @@
 
 </body>
 <script type="text/javascript">
+//$("body").css("background-color","lightblue")
+
   	// Chosen CSS
     var config = {
       '.chosen-select'           : {},
@@ -219,7 +224,7 @@
       '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
       '.chosen-select-width'     : {width:"95%"}
     }
-    
+
     for (var selector in config) {
       $(selector).chosen(config[selector]);
     }
@@ -229,12 +234,6 @@ var gender= $("#gender").val();
 
     // Capture the form inputs 
     $("#submit").on("click", function(){
-	var reset = $("<button>");
-		reset.addClass("btn btn-primary btn-lg btn-block")
-	 reset.text("Reset");
-	reset.css("margin-top", "23px")
-	 $("#reset").append(reset);
-    	// Form validation
     	function Submit() {
 		  var isValid = true;
 		  $('.form-control').each(function() {
@@ -261,14 +260,8 @@ var gender= $("#gender").val();
 	    		gender:$("#gender").val(),
 	    		scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
 	    	}
-
-
-	    	// Grab the URL of the website
 	    	var currentURL = window.location.origin;
-	    	//var url = currentURL + "/api/:gender";
-				console.log(typeof userData.gender)				    	// AJAX post the data to the friends API. 
-					
-
+				console.log(typeof userData.gender)				    	
 console.log(userData.gender)
 if(userData.gender==1){
 			$.ajax({
@@ -282,16 +275,12 @@ if(userData.gender==1){
 								total += parseInt(userData.scores[i]); 
 							    userData.total=parseInt(total);								             
 						    }
-		 												//console.log(userData.total)	
+		 													
 							for(i=0; i<friends.length;i++){
 								friends[i].sum= friends[i].scores[0]+friends[i].scores[1]+friends[i].scores[2]+friends[i].scores[3]+friends[i].scores[4]+friends[i].scores[5]+friends[i].scores[6]+friends[i].scores[7]+friends[i].scores[8]+friends[i].scores[9];
 
         						 friends[i].difference= userData.total-friends[i].sum;
-         							//console.log(userData.total)
-                                 	//console.log(friends[0].sum)
-                                    //console.log(friends[0].difference)
-
-							              if(friends[i].difference<0){
+        									 if(friends[i].difference<0){
 							                  friends[i].difference= friends[i].difference * -1;
 							              }
 							              else{
@@ -299,56 +288,25 @@ if(userData.gender==1){
 							              }
 							             
 							 
-							             }   
+						  }   
 						             		   friends.sort(function(a, b) {
 						              		   return parseFloat(b.difference) - parseFloat(a.difference);
 						                        });
-
+						             
 						   						$("#matchImg").attr("src",friends[0].photo);
-						   						$("#matchName").text(friends[0].name)
-						   						//$("#compatable-match").text(friends[0].percentage)
+						   						$("#matchName").css("font-family","cursive");
+						   						$("#compatable-match").css("font-family","cursive");
+						   						$("#matchName").css("font-weight","bold");
+						   						$("#compatable-match").css("font-weight","bold");
+						   						$("#matchName").text(friends[0].name);
+						   						$("#compatable-match").text("You're Most compatable with")
+						   						$(".container").toggle();
+						   						$("body").css("background-color","black")
 						   						$("#resultsModal").modal("toggle")
-						   			// 		    $("#h3-about").html(" ");
-						   			// 			$("#h4-name").html(" ");
-						   			// 			$("#h2-survey").css("text-align","center")
-						   			// 			$("#h2-survey").html(userData.name +" here is who you are most compatable with");
-						      //                   console.log(friends);
 
-						      //                   $(".entire").css("background-color","lightblue");
-						      //                   $(".entire").css("border","3px solid black");
-						      //                   $("#compatable").css("font-weight","bold");
-						      //                   $("#compatable").css("font-family","cursive");
-						      //                   $("#compatable").css("font-size","24px");
-						                        
-						      //                   $("#h2-survey").css("font-weight","bold");
-						      //                   $("#h2-survey").css("font-family","cursive");
-						      //                   $("#h2-survey").css("font-size","24px");
-						      //                   $("#compatable").empty()
-						                        
-						      //                   for(i=0;i<friends.length;i++){
-						      //                   	friends[i].percentage = parseInt(((friends[i].difference)/50)*100) + "%";
-						      //                   	console.log(friends[i].percentage)
-						      //                   	var a = $("<img>");
-						      //                   		a.attr("src", friends[i].photo)
-						      //                   		a.css("width", "330");
-						      //                   		a.css("height", "330")
-						      //                   		a.css("margin", "20px");
-						      //                   		a.css("border","3px solid black")
-
-												// var b= $("<div>");
-											 //    b.html("<div class= 'move'>"+ "*** " +friends[i].name+" ***" +"</div> <br>" +"<div class= 'move2'>"+ friends[i].percentage+" compatable" +"</div>");
-												// console.log(b);
-												// b.append(a)
-												// $("#compatable").css("display","flex")
-												// $("#compatable").append(b)
-												// }
-
-													
-
-						})  //.done(function(friends	
-}						
-
-
+						   	})
+		}
+						   		
 	if(userData.gender==2){
 			$.ajax({
 				   url: currentURL + "/api/friends/boy",
@@ -362,93 +320,55 @@ if(userData.gender==1){
 								total += parseInt(userData.scores[i]); 
 							    userData.total=parseInt(total);								             
 						    }
-		 					    //console.log(userData.total)	
-					
-
-
+		 					    
 							for(i=0; i<boy.length;i++){
 								boy[i].sum= boy[i].scores[0]+boy[i].scores[1]+boy[i].scores[2]+boy[i].scores[3]+boy[i].scores[4]+boy[i].scores[5]+boy[i].scores[6]+boy[i].scores[7]+boy[i].scores[8]+boy[i].scores[9];
 
         						boy[i].difference= userData.total-boy[i].sum;
-         							// console.log(userData.total)
-                //                  	console.log(friends[0].sum)
-                //                     console.log(friends[0].difference)
-
 							              if(boy[i].difference<0){
 							                  boy[i].difference= boy[i].difference * -1;
 							              }
 							              else{
 							                  boy[i].difference= boy[i].difference
 							              }
-							             
-							                 // diffy.push(boy[i].difference);
-							                 //console.log(friends[i].difference)
-							             }   
+							          
+							}   
 						             		  boy.sort(function(a, b) {
 						              		   return parseFloat(b.difference) - parseFloat(a.difference);
 						                        });
 
-						             		  $("#matchName").
-						   
-						                        console.log(boy);
-						   					    $("#h3-about").html(" ");
-						   						$("#h4-name").html(" ");
-						   						$("#h2-survey").css("text-align","center")
-						   						$("#h2-survey").html(userData.name +" here is who you are most compatable with");
-
-						                        $(".entire").css("background-color","lightblue");
-						                        $(".entire").css("border","3px solid black");
-						                        $("#compatable").css("font-weight","bold");
-						                        $("#compatable").css("font-family","cursive");
-						                        $("#compatable").css("font-size","24px");
-						                        
-						                        $("#h2-survey").css("font-weight","bold");
-						                       // $("#h2-survey").css("color","sans-serif");
-						                        $("#h2-survey").css("font-family","sans-serif");
-						                        $("#h2-survey").css("font-size","24px");
-						                        $("#compatable").empty()
-						                        for(i=0;i<boy.length;i++){
-						                        	boy[i].percentage = parseInt(((boy[i].difference)/50)*100) + "%";
-						                        	console.log(boy[i].percentage)
-						                        	var a = $("<img>");
-						                        		a.attr("src", boy[i].photo)
-						                        		a.css("width", "330");
-						                        		a.css("height", "330")
-						                        		a.css("margin", "20px");
-						                        		a.css("border","3px solid black")
-
-												var b= $("<div>");
-											    b.html("<div class= 'move'>"+ "*** " +boy[i].name+" ***" +"</div> <br>" +"<div class= 'move2'>"+ boy[i].percentage+" compatable" +"</div>");
-												console.log(b);
-												b.append(a)
-												$("#compatable").css("display","flex")
-												$("#compatable").append(b)
-												}			
-
-					})
+						             		    $("#matchImg").attr("src",boy[0].photo);
+						   						$("#matchName").css("font-family","cursive");
+						   						$("#compatable-match").css("font-family","cursive");
+						   						$("#matchName").css("font-weight","bold");
+						   						$("#compatable-match").css("font-weight","bold");
+						   						$("#matchName").text(boy[0].name);
+						   						$("#compatable-match").text("You're most compatable with")
+						   						$(".container").toggle();
+						   						$("body").css("background-color","black")
+						   						$("#resultsModal").modal("toggle")
+						})
 
 				}	//userData.gender==2	
 		
 		}
 
-
-	    	
-		
-		else
-		{
+		else{
 			alert("Please fill out all fields before submitting!");
 		}
     	
     	return false;
-
+		    	
     	
     });
+		
+		$("#resultsModal").on("click", function(){
+	console.log("heyyyyyy")
+	document.location.reload();
+})
 
-	
 
-$("#reset").on("click", function() {
-		document.location.reload();
-	 	});
+
   </script>
 
 
