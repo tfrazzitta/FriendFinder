@@ -1,9 +1,9 @@
 
 
 var  GirlArray = [{
-   "name":"Sue",
+   "name":"Lisa",
    "gender":"Female",
-   "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+   "photo":"http://images.fanpop.com/images/image_uploads/Lisa-saved-by-the-bell-354283_150_260.jpg",
    "scores":[
       5,
       1,
@@ -20,9 +20,9 @@ var  GirlArray = [{
   //"difference": " "
 },
  {
-   "name":"Michelle",
+   "name":"Jesse",
    "gender":"Female",
-   "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+   "photo":"http://manrepeller.wpengine.netdna-cdn.com/wp-content/uploads/2015/08/man-repeller-saved-by-the-bell-style-jessie-playbuzz-667x1000.jpg",
    "scores":[
       5,
       1,
@@ -39,9 +39,9 @@ var  GirlArray = [{
   //"difference": " "
  },
 {
-"name":"Helga",
+"name":"Kelly",
    "gender":"Female",
-   "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+   "photo":"https://www.maxim.com/.image/t_share/MTM3MTYyNTY2NDIwOTMyMzgx/kapowski-bodyjpg.jpg",
    "scores":[
       5,
       1,

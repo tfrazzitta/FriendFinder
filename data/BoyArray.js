@@ -1,7 +1,7 @@
 var  BoyArray = [{
-   "name":"Ben",
+   "name":"Tom",
    "gender":"Male",
-   "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+   "photo":"https://lh6.googleusercontent.com/-8Qb06t7dSb8/AAAAAAAAAAI/AAAAAAAAK74/JIhZ9Z-dCDc/s0-c-k-no-ns/photo.jpg",
    "scores":[
       5,
       1,
@@ -18,9 +18,9 @@ var  BoyArray = [{
  // "difference": " "
 },
  {
-   "name":"Mike",
+   "name":"Zack",
     "gender":"Male",
-   "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+   "photo":"http://pixel.nymag.com/imgs/daily/vulture/2016/01/19/19-zac-efron-tweet-mlk.w529.h529.jpg",
    "scores":[
       5,
       2,
@@ -37,9 +37,9 @@ var  BoyArray = [{
   //"difference": " "
  },
 {
-"name":"Frank",
+"name":"Jake",
    "gender":"Male",
-   "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+   "photo":"http://s4.evcdn.com/images/edpborder500/I0-001/003/139/567-3.jpeg_/jake-gyllenhaal-67.jpeg",
    "scores":[
       4,
       1,
