@@ -8,17 +8,18 @@ var diffy =[]
 module.exports = function(app) {
 
 app.get("/api/friends", function(req, res) {
-  console.log(res.body)
-
-  // if(req.body.gender==="Male"){
+  // console.log(req.params.name);
+  // if(req.params.gender==="Male"){
   //   res.send(GirlArray)
   // }
-  //   if(req.body.gender==="Female"){
+  //   if(req.params.gender==="Female"){
   //   res.send(BoyArray)
   // }
+
+
 BigArray.push(BoyArray)
 BigArray.push(GirlArray)
-console.log(BigArray)
+//console.log(BigArray)
   res.send(BigArray);
 
 });
@@ -35,9 +36,10 @@ console.log(GirlArray)
 
 
 
+//app.get("/api/friends",function(req, res) {
 
 app.post("/api/friends",function(req, res) {
-
+  console.log(req.params.name)
    var meArray = req.body.scores;
    var total=0;
       for(var i in meArray) { 
@@ -67,7 +69,7 @@ app.post("/api/friends",function(req, res) {
                         BoyArray.push(req.body)
                         res.send(GirlArray)
 }
-
+                    
   
 if(req.body.gender=== "Female"){
         for(i=0; i<BoyArray.length;i++){

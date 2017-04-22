@@ -14,8 +14,8 @@ var  BoyArray = [{
       4,
       1
     ],
-  "total": "20",
-  "difference": " "
+  "total": "20"
+ // "difference": " "
 },
  {
    "name":"Mike",
@@ -23,18 +23,18 @@ var  BoyArray = [{
    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
    "scores":[
       5,
-      1,
-      4,
-      4,
-      5,
-      1,
       2,
-      5,
+      2,
+      2,
+      2,
+      3,
+      1,
       4,
+      1,
       1
     ],
-  "total": "33",
-  "difference": " "
+  "total": "33"
+  //"difference": " "
  },
 {
 "name":"Frank",
@@ -42,18 +42,18 @@ var  BoyArray = [{
    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
    "scores":[
       4,
-      8,
+      1,
       7,
       4,
       3,
-      8,
-      7,
+      1,
+      2,
       7,
       4,
       1
     ],
-  "total": "17",
-  "difference": " "
+  "total": "17"
+  //"difference": " "
  }];
 
 

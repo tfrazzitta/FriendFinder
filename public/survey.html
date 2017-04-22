@@ -7,6 +7,7 @@
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery.js"></script>
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 	<!-- Font Awesome Glyphicons -->
@@ -15,7 +16,7 @@
 	<!-- Chosen -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
-
+	<!-- <script src="java.js"></script> -->
 </head>
 <body id= "#comp">
 
@@ -193,8 +194,7 @@
 	  </div>
 	</div>
 
-  <script type="text/javascript">
-
+<script type="text/javascript">
   	// Chosen CSS
     var config = {
       '.chosen-select'           : {},
@@ -244,24 +244,103 @@ var gender= $("#gender").val();
 
 	    	// Grab the URL of the website
 	    	var currentURL = window.location.origin;
-	    	var url = currentURL + "/api/friends";
-								    	// AJAX post the data to the friends API. 
-					// $.post("/api/friends",  userData,
-     //    			function(data) {
-     //    				console.log(data)
-					// 				})
+	    	//var url = currentURL + "/api/:gender";
+				console.log(typeof userData.gender)				    	// AJAX post the data to the friends API. 
+					
 
-					$.ajax({
-							  url: url,
-							  method: "POST",
-							  context: userData
-							}).done(function(friends) {
-							  
-							  console.log(friends)
-							});
 
-				    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-	    			
+if(userData.gender=1){
+			$.ajax({
+				   url: currentURL + "/api/friends/girl",
+			       method: "GET",
+				   context: userData
+				   }).done(function(friends) {
+					   var meArray = userData.scores;
+					   var total=0;
+							for(i=0;i<userData.scores.length;i++) { 
+								total += parseInt(userData.scores[i]); 
+							    userData.total=parseInt(total);								             
+						    }
+		 												//console.log(userData.total)	
+					
+
+
+							for(i=0; i<friends.length;i++){
+								friends[i].sum= friends[i].scores[0]+friends[i].scores[1]+friends[i].scores[2]+friends[i].scores[3]+friends[i].scores[4]+friends[i].scores[5]+friends[i].scores[6]+friends[i].scores[7]+friends[i].scores[8]+friends[i].scores[9];
+
+        						 friends[i].difference= userData.total-friends[i].sum;
+         							//console.log(userData.total)
+                                 	//console.log(friends[0].sum)
+                                    //console.log(friends[0].difference)
+
+							              if(friends[i].difference<0){
+							                  friends[i].difference= friends[i].difference * -1;
+							              }
+							              else{
+							                  friends[i].difference= friends[i].difference
+							              }
+							             
+							                 
+							                 //console.log(friends[i].difference)
+							             }   
+						             		   friends.sort(function(a, b) {
+						              		   return parseFloat(b.difference) - parseFloat(a.difference);
+						                        });
+						   
+						                        console.log(friends)  
+					})
+
+				}		
+	
+
+
+
+else{
+			$.ajax({
+				   url: currentURL + "/api/friends/boy",
+			       method: "GET",
+				   context: userData
+				   }).done(function(boy) {
+					   var meArray = userData.scores;
+					   var total=0;
+							for(i=0;i<userData.scores.length;i++) { 
+								total += parseInt(userData.scores[i]); 
+							    userData.total=parseInt(total);								             
+						    }
+		 					    //console.log(userData.total)	
+					
+
+
+							for(i=0; i<boy.length;i++){
+								boy[i].sum= boy[i].scores[0]+boy[i].scores[1]+boy[i].scores[2]+boy[i].scores[3]+boy[i].scores[4]+boy[i].scores[5]+boy[i].scores[6]+boy[i].scores[7]+boy[i].scores[8]+boy[i].scores[9];
+
+        						boy[i].difference= userData.total-boy[i].sum;
+         							// console.log(userData.total)
+                //                  	console.log(friends[0].sum)
+                //                     console.log(friends[0].difference)
+
+							              if(boy[i].difference<0){
+							                  boy[i].difference= boy[i].difference * -1;
+							              }
+							              else{
+							                  boy[i].difference= boy[i].difference
+							              }
+							             
+							               
+							                 //console.log(friends[i].difference)
+							             }   
+						             		  boy.sort(function(a, b) {
+						              		   return parseFloat(b.difference) - parseFloat(a.difference);
+						                        });
+						   
+						                        console.log(boy)  
+					})
+
+				}		
+	
+
+			    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
+	}    			
 	    								
 	    			// var x = $("<div>")
 	    			// 	x.addClass(".compatable")
@@ -276,10 +355,7 @@ var gender= $("#gender").val();
 		    		//$("#resultsModal").modal('toggle');
 				
 	         
-	    }
-
-
-
+	
 
 
 	    	
@@ -294,6 +370,8 @@ var gender= $("#gender").val();
 
 
   </script>
+
+
 
 </body>
 </html>

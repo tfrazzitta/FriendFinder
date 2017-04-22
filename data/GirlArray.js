@@ -1,3 +1,5 @@
+
+
 var  GirlArray = [{
    "name":"Sue",
    "gender":"Female",
@@ -5,17 +7,17 @@ var  GirlArray = [{
    "scores":[
       5,
       1,
+      1,
       4,
-      4,
-      5,
+      1,
       1,
       2,
-      5,
+      1,
       4,
       1
     ],
-  "total": "20",
-  "difference": " "
+  "total": "20"
+  //"difference": " "
 },
  {
    "name":"Michelle",
@@ -25,16 +27,16 @@ var  GirlArray = [{
       5,
       1,
       4,
-      4,
-      5,
-      1,
       2,
-      5,
+      2,
+      2,
+      3,
+      3,
       4,
       1
     ],
-  "total": "33",
-  "difference": " "
+  "total": "33"
+  //"difference": " "
  },
 {
 "name":"Helga",
@@ -52,8 +54,8 @@ var  GirlArray = [{
       4,
       1
     ],
-  "total": "17",
-  "difference": " "
+  "total": "17"
+ // "difference": " "
  }];
 
 
